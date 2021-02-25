@@ -45,7 +45,7 @@ class getPhoneNumberRegistered(APIView):
         keygen = generateKey()
         key = base64.b32encode(keygen.returnValue(phone).encode())  # Generating Key
         OTP = pyotp.HOTP(key)  # HOTP Model
-        if OTP.verify(request.data["otp"], Mobile.counter):  # Verifying the OTP
+        if OTP.verify(request.data["OTP"], Mobile.counter):  # Verifying the OTP
             Mobile.isVerified = True
             Mobile.save()
             return Response("You are authorised", status=200)
@@ -85,7 +85,7 @@ class getPhoneNumberRegistered_TimeBased(APIView):
         keygen = generateKey()
         key = base64.b32encode(keygen.returnValue(phone).encode())  # Generating Key
         OTP = pyotp.TOTP(key,interval = EXPIRY_TIME)  # TOTP Model 
-        if OTP.verify(request.data["otp"]):  # Verifying the OTP
+        if OTP.verify(request.data["OTP"]):  # Verifying the OTP
             Mobile.isVerified = True
             Mobile.save()
             return Response("You are authorised", status=200)
