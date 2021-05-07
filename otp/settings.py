@@ -82,6 +82,9 @@ DATABASES = {
     }
 }
 
+# DEFAULT_AUTO_FIELD defined because  verification.phoneModel Auto-created primary key used 
+# when not defining a primary key type, by default 'django.db.models.AutoField'.
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
